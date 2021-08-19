@@ -1,0 +1,95 @@
+### This file is maintained by Shivaji Dalvi for release changes purpose
+
+Date : 19/08/2021
+Changes : file_docs_by_mail
+Old Changes path : /public_html/file_docs_by_mail/file_docs_by_mail_19082021.zip
+New Changes path on local : /to_server/file_docs_by_mail/
+===========================================================================================
+Date : 06/08/2021
+Changes : account_ledger_csv
+Old Changes path : /public_html/account_ledger_csv/account_ledger_csv_06082021.zip
+New Changes path on local : /to_server/account_ledger_csv/
+===========================================================================================
+Date : 19/07/2021
+Changes : invoice_complet_changes
+Old Changes path : /public_html/invoice_complet_changes/invoice_complet_changes_19072021.zip
+New Changes path on local : /to_server/invoice_complet_changes/
+===========================================================================================
+Date : 12/07/2021
+New Changes path on local : /to_server/cargo_commodity_report/
+===========================================================================================
+Date : 25/06/2021
+New Changes path on local : /to_server/weight_quality_changes_word/
+===========================================================================================
+Date : 31/05/2021
+New Changes path on local : /to_server/weight_quality_changes/
+===========================================================================================
+Date : 23/04/2021
+Changes : account_ledger_vendor_changes
+New Changes path on local : /to_server/account_ledger_vendor_changes/
+===========================================================================================
+Date : 15/04/2021
+Changes : login_logout_report
+Old Changes path : /public_html/agrimin_changes_backup/login_logout_report_15042021.zip
+New Changes path on local : /to_server/login_logout_report/
+===========================================================================================
+Date : 24/03/2021
+Changes : jehidy_invoice_changes2
+Old Changes path : /public_html/agrimin_changes_backup/jehidy_invoice_changes2_24032021.zip
+New Changes path on local : /to_server/jehidy_invoice_changes2/
+===========================================================================================
+Date : 22/03/2021
+Changes : Bank Changes
+Old Changes path : /public_html/agrimin_changes_backup/bank_charges_changes_22032021.zip
+New Changes path on local : /to_server/bank_charges_changes/
+===========================================================================================
+Changes : Invoice Total Changes
+Old Changes path : /public_html/agrimin_changes_backup/invoice_total_changes_18032021.zip
+New Changes path on local : /to_server/invoice_total_changes/
+===========================================================================================
+Date : 08/03/2021
+Date : 12/03/2021
+Changes : Credit Note changes
+Old Changes path : /public_html/agrimin_changes_backup/credit_note_changes_10032021.zip
+New Changes path on local : /to_server/credit_note_changes/
+===========================================================================================
+Date : 08/03/2021
+Changes : Jehidy Invoice changes
+Old Changes path : /public_html/agrimin_changes_backup/jehidy_invoice_changes_08032021.zip
+New Changes path on local : /to_server/jehidy_invoice_changes_08032021/
+===========================================================================================
+Date : 11/12/2020
+Changes : Weight certificate changes
+Old Changes path : /public_html/agrimin_changes_backup/weight_certficate_changes.zip
+New Changes path on local : /to_server/weight_certficate_changes/
+===========================================================================================
+Date : 09/12/2020
+Changes : Fofsa form Comments,Viewoperations click error issue.
+Old Changes path : /public_html/agrimin/File_master_10122020.php
+New Changes path on local : /to_server/manoj_issues_04122020/
+===========================================================================================
+Date : 08/12/2020
+Changes : Manoj issues about Unit,load port,address
+Old Changes path : /public_html/agrimin_changes_backup/manoj_issues_04122020.zip
+New Changes path on local : /to_server/manoj_issues_04122020/
+===========================================================================================
+Date : 04/12/2020
+Changes : Viewfileregister - File No Search gives error.
+Old Changes path : /public_html/agrimin_changes_backup/admin_issues_05122020.zip
+New Changes path on local : Done from Home.
+===========================================================================================
+Date : 04/12/2020
+Changes : Agrmin User Manual Failed To Load.
+Old Changes path : /uploads/agrimin_user_manual_version_I.pdf
+New Changes path on local : /to_server/quality_certicate_issues_0212/
+===========================================================================================
+Date : 02/12/2020
+Changes : Jehidys Method coulmn to shift towards end.
+Old Changes path : /public_html/agrimin_changes_backup/quality_certicate_issues_0212.zip
+New Changes path on local : /to_server/quality_certicate_issues_0212/
+===========================================================================================
+Date : 02/12/2020
+Changes : View Inspection issue with cargo
+Old Changes path : /public_html/agrimin_changes_backup/admin_issues_0212.zip
+New Changes path on local : /to_server/admin_issues_0212.zip/
+===========================================================================================
