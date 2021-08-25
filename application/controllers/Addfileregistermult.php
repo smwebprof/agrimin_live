@@ -286,7 +286,7 @@ class Addfileregistermult extends CI_Controller {
 				$email_cc[] = 'vikram.amin@agrimincontrol.com';
 				$email_cc[] = 'ayushi@rcaindia.net';
 				$email_cc[] = 'dharams@rcaindia.net';
-				$email_cc[] = 'devansh.amin@agrimincontrol.com';
+				#$email_cc[] = 'devansh.amin@agrimincontrol.com';
 				if ($_SESSION['user_email']!=$_SESSION['primary_email']) {
 					$email_cc[] = $_SESSION['primary_email'];
 				}

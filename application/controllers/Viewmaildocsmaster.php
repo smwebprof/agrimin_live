@@ -29,8 +29,13 @@ class Viewmaildocsmaster extends CI_Controller {
 		$this->load->model('Document_master');
 		$this->load->model('User_master');
 		
-		$mainmodule_id = 9;
-		$submodule_id = 45;
+		if ($_SESSION['employee_staff']=='Admin') {
+	        $mainmodule_id = 9;
+	        $submodule_id = 76;
+        } else {
+	        $mainmodule_id = 12;
+            $submodule_id = 77;
+        }
 		
 		$this->data['title'] = 'ACI - Viewmaildocsmaster';
 		#$this -> load -> model('campaign_model');
