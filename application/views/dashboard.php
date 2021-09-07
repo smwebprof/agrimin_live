@@ -119,7 +119,7 @@
 							 <font color='red'>***</font> Dashboard Data is displayed as per current financial year.
 						</p>
 						<p>
-							 <font color='red'>***</font> Dashboard page is auto refresh every 60 sec.
+							 <font color='red'>***</font> Dashboard will auto refresh every 60 sec.
 						</p>
 					</div>
 				</div>
