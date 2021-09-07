@@ -108,6 +108,239 @@
 				</div>
 			</div> */ ?>
 			<!-- END DASHBOARD STATS -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="note note-success">
+						<!--<h4 class="block">Pace</h4>-->
+						<p>
+							 <u><h5>You now logged in to <b><?php echo $_SESSION['branch_name'];?></b>  Branch.Please continue...</h5></u>
+						</p>
+						<p>
+							 <font color='red'>***</font> Dashboard Data is displayed as per current financial year.
+						</p>
+						<p>
+							 <font color='red'>***</font> Dashboard page is auto refresh every 60 sec.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- BEGIN DASHBOARD STATS -->
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat blue">
+						<div class="visual">
+							<i class="fa fa-files-o"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 <?php echo $this->data['fileCount']; ?>
+							</div>
+							<div class="desc">
+								 Total Files Created
+							</div>
+						</div>
+						<a class="more" href="javascript:void(0);">
+							 View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat green">
+						<div class="visual">
+							<i class="fa fa-file"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 <?php echo $this->data['invoiceCount']; ?>
+							</div>
+							<div class="desc">
+								 Total Invoices Created
+							</div>
+						</div>
+						<a class="more" href="javascript:void(0);">
+							 View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat purple">
+						<div class="visual">
+							<i class="fa fa-usd"></i>
+						</div>
+						<div class="details">
+							<div class="desc">
+								 Total Invoice Amount
+							</div>
+							<div class="desc">
+								 <?php echo $this->data['invoice_amt']; ?>$
+							</div>
+							<div class="desc">
+								 Total Payment Received
+							</div>
+							<div class="desc">
+								 <?php echo $this->data['invoice_rec_amt']; ?>$
+							</div>
+						</div>
+						<a class="more" href="javascript:void(0);">
+							 View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat yellow">
+						<div class="visual">
+							<i class="fa fa-group"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 <?php echo $this->data['clientCount']; ?>
+							</div>
+							<div class="desc">
+								 Total Clients
+							</div>
+						</div>
+						<a class="more" href="javascript:void(0);">
+							 View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- END DASHBOARD STATS -->
+			<div class="row ">
+				<div class="col-md-6 col-sm-6">
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-bell-o"></i>Recent Files Created
+							</div>
+							<?php /*<div class="actions">
+								<div class="btn-group">
+									<a class="btn btn-sm default" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+										 Filter By <i class="fa fa-angle-down"></i>
+									</a>
+									<div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+										<label><input type="checkbox"/> Finance</label>
+										<label><input type="checkbox" checked=""/> Membership</label>
+										<label><input type="checkbox"/> Customer Support</label>
+										<label><input type="checkbox" checked=""/> HR</label>
+										<label><input type="checkbox"/> System</label>
+									</div>
+								</div>
+							</div>*/ ?>
+						</div>
+						<div class="portlet-body">
+							<div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+								<ul class="feeds">
+								    <?php
+							        $rows = $this->data['recent_files']; 
+							        foreach($rows as $recent_files){
+						            ?>
+									<li>
+										<div class="col1">
+											<div class="cont">
+												<div class="cont-col1">
+													<div class="label label-sm label-info">
+														<i class="fa fa-check"></i>
+													</div>
+												</div>
+												<div class="cont-col2">
+													<div class="desc">
+														 <?php echo $recent_files['first_name']." ".$recent_files['last_name']; ?> created File with File No <u><a href="<?php echo BASE_PATH; ?>fullviewfileregister?id=<?php echo base64_encode($recent_files['id']); ?>" target="_blank"><?php echo $recent_files['file_no']; ?></a></u>
+														<!--<span class="label label-sm label-warning ">
+															 View File <i class="fa fa-share"></i>
+														</span>-->
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col2">
+											<div class="desc">
+												 <?php echo date('d-m-Y',strtotime($recent_files['file_creation_date'])); ?>
+											</div>
+										</div>
+									</li>
+									<?php
+							        }
+						            ?>
+								</ul>
+							</div>
+						</div>										
+					</div>		
+				</div>
+
+				<div class="col-md-6 col-sm-6">
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-bell-o"></i>Recent Invoice Created
+							</div>
+							<?php /*<div class="actions">
+								<div class="btn-group">
+									<a class="btn btn-sm default" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+										 Filter By <i class="fa fa-angle-down"></i>
+									</a>
+									<div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+										<label><input type="checkbox"/> Finance</label>
+										<label><input type="checkbox" checked=""/> Membership</label>
+										<label><input type="checkbox"/> Customer Support</label>
+										<label><input type="checkbox" checked=""/> HR</label>
+										<label><input type="checkbox"/> System</label>
+									</div>
+								</div>
+							</div>*/ ?>
+						</div>
+						<div class="portlet-body">
+							<div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+								<ul class="feeds">
+									<?php
+							        $rows = $this->data['recent_invoices']; 
+							        foreach($rows as $recent_invoices){
+						            ?>
+									<li>
+										<div class="col1">
+											<div class="cont">
+												<div class="cont-col1">
+													<div class="label label-sm label-info">
+														<i class="fa fa-check"></i>
+													</div>
+												</div>
+												<div class="cont-col2">
+													<div class="desc">
+														 <?php 
+														 if (!empty($recent_invoices['invoice_no'])) {
+															if ($recent_invoices['invoice_info']=='Single') {
+														 			echo $recent_invoices['first_name']." ".$recent_invoices['last_name']." created Invoice with Invoice No <u><a href='".BASE_PATH."fullviewinvoiceregister?id=".base64_encode($recent_invoices['id'])."' target='_blank'>".$recent_invoices['invoice_no']."</a></u>";
+														 		}
+														 	if ($recent_invoices['invoice_info']=='Multiple') {
+														 			echo $recent_invoices['first_name']." ".$recent_invoices['last_name']." created Invoice with Invoice No <u><a href='".BASE_PATH."fullviewmultinvoiceregister?id=".base64_encode($recent_invoices['id'])."' target='_blank'>".$recent_invoices['invoice_no']."</a></u>";
+														 		}	
+
+														 } else {
+														 	echo $recent_invoices['first_name']." ".$recent_invoices['last_name']." created Draft Invoice";
+														 } ?>											 
+														<!--<span class="label label-sm label-warning ">
+															 View File <i class="fa fa-share"></i>
+														</span>-->
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col2">
+											<div class="desc">
+												 <?php echo date('d-m-Y',strtotime($recent_invoices['invoice_date'])); ?>
+											</div>
+										</div>
+									</li>
+									<?php
+							        }
+						            ?>									
+								</ul>
+							</div>
+						</div>										
+					</div>		
+				</div>	
+			</div>		
 			<?php /*<div class="clearfix">
 			</div>
 			<div class="row">clearfix
@@ -995,19 +1228,280 @@
 				</div>
 			</div>
 			<div class="clearfix">
-			</div>
+			</div>*/?>
+			
+			<div class="row">
+				<div class="col-md-6">
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-comments"></i>Cargo/Client Wise Data
+							</div>
+							<!--<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>-->
+							<div class="actions">
+								<a href="<?php echo BASE_PATH; ?>Viewcommodityfilereport" class="btn btn-sm yellow easy-pie-chart-reload" target="_blank">
+									<i class="fa fa-repeat"></i> View Report
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+								<thead>
+								<tr>
+									<th>
+										 #
+									</th>
+									<th>
+										 Cargo Group
+									</th>
+									<th>
+										 Cargo
+									</th>
+									<th>
+										 Client Name
+									</th>
+									<th>
+										 Quantity
+									</th>
+									<th>
+										 Unit
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+								<?php
+								$rows = $this->data['cargos']; 
+								$i=1;	
+								foreach($rows as $invoice_data){
+								?>
+								<tr class="active">
+									<td>
+										 <?php echo $i; ?>
+									</td>
+									<td>
+										 <?php echo $invoice_data['cargo_group_name']; ?>
+									</td>
+									<td>
+										 <?php echo $invoice_data['commodity_name']; ?>
+									<td>
+										 <?php echo $invoice_data['client_name']; ?>
+									</td>
+									<td>
+										 <?php echo $invoice_data['approx_qty']; ?>
+									</td>
+									<td>
+										 <?php echo $invoice_data['unit_name']; ?>
+									</td>
+								</tr>
+								<?php $i++; } ?>								
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+				</div>
+				<div class="col-md-6">
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-comments"></i>Ledger Data
+							</div>
+							<!--<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>-->
+							<div class="actions">
+								<a href="<?php echo BASE_PATH; ?>viewledgerfilereport" class="btn btn-sm yellow easy-pie-chart-reload" target="_blank">
+									<i class="fa fa-repeat"></i> View Report
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+								<thead>
+								<tr>
+									<th>
+										 #
+									</th>
+									<th>
+										 Vendor Name
+									</th>
+									<th>
+										 Credit Amount
+									</th>
+									<th>
+										 Debit Amount
+									</th>
+									<th>
+										 Balance Amount
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+								<?php
+								$rows = $this->data['ledgerdata']; 
+								$j=1;	
+								foreach($rows as $ledgerdata){
+								if ($j<=5) { 
+								?>
+								<tr class="active">
+									<td>
+										 <?php echo $j; ?>
+									</td>
+									<td>
+										 <?php echo $ledgerdata['vendor_name']; ?>
+									</td>
+									<td>
+										 <?php echo @$ledgerdata['credit_amount']; ?>
+									<td>
+										 <?php echo @$ledgerdata['debit_amount']; ?>
+									</td>
+									<td>
+										 <?php echo @$ledgerdata['balance_amount']; ?>
+									</td>
+								</tr>
+								<?php } $j++; } ?>
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+				</div>
+			</div>	
+
 			<div class="row ">
 				<div class="col-md-6 col-sm-6">
 					<div class="portlet box purple">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-calendar"></i>General Stats
+								<i class="fa fa-calendar"></i>File Status Data
 							</div>
-							<div class="actions">
+							<!--<div class="actions">
 								<a href="javascript:;" class="btn btn-sm yellow easy-pie-chart-reload">
 									<i class="fa fa-repeat"></i> Reload
 								</a>
+							</div>-->
+						</div>
+						<div class="portlet-body">
+							<div class="row">
+								<div class="col-md-2">
+									<div class="easy-pie-chart">
+										<div class="number transactions" data-percent="55">
+											<span>
+												 <?php echo @$this->data['fileCount']; ?>
+											</span>
+											 <!--%-->
+										</div>
+										<a class="title" href="javascript:void(0);">
+											 Total Files <i class="m-icon-swapright"></i>
+										</a>
+									</div>
+								</div>
+								<div class="margin-bottom-10 visible-sm">
+								</div>
+								<div class="col-md-2">
+									<div class="easy-pie-chart">
+										<div class="number visits" data-percent="85">
+											<span>
+												 <?php echo @$this->data['fileCompleteCount']; ?>
+											</span>
+											 <!--%-->
+										</div>
+										<a class="title" href="javascript:void(0);">
+											 Completed <i class="m-icon-swapright"></i>
+										</a>
+									</div>
+								</div>
+								<div class="margin-bottom-10 visible-sm">
+								</div>
+								<div class="col-md-2">
+									<div class="easy-pie-chart">
+										<div class="number bounce" data-percent="46">
+											<span>
+												 <?php echo @$this->data['filePendingCount']; ?>
+											</span>
+											 
+										</div>
+										<a class="title" href="javascript:void(0);">
+											 Pending <br/><i class="m-icon-swapright"></i>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="easy-pie-chart">
+										<div class="number bounce" data-percent="46">
+											<span>
+												 <?php echo @$this->data['fileInvoicedCount']; ?>
+											</span>
+											 
+										</div>
+										<a class="title" href="javascript:void(0);">
+											 Invoiced <br/><i class="m-icon-swapright"></i>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="easy-pie-chart">
+										<div class="number bounce" data-percent="46">
+											<span>
+												 <font color="red"><?php echo @$this->data['fileCancelledCount']; ?></font>
+											</span>
+											 
+										</div>
+										<a class="title" href="javascript:void(0);">
+											 <font color="red">Cancelled</font> <i class="m-icon-swapright"></i>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="easy-pie-chart">
+										<div class="number bounce" data-percent="46">
+											<span>
+												 <?php echo @$this->data['fileRunningCount']; ?>
+											</span>
+											 
+										</div>
+										<a class="title" href="javascript:void(0);">
+											 Running <br/><i class="m-icon-swapright"></i>
+										</a>
+									</div>
+								</div>
 							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<div class="portlet box purple">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-calendar"></i>Master Data
+							</div>
+							<!--<div class="actions">
+								<a href="javascript:;" class="btn btn-sm yellow easy-pie-chart-reload">
+									<i class="fa fa-repeat"></i> Reload
+								</a>
+							</div>-->
 						</div>
 						<div class="portlet-body">
 							<div class="row">
@@ -1015,12 +1509,12 @@
 									<div class="easy-pie-chart">
 										<div class="number transactions" data-percent="55">
 											<span>
-												 +55
+												 <?php echo @$this->data['VendorCount']; ?>
 											</span>
-											 %
+											 <!--%-->
 										</div>
-										<a class="title" href="#">
-											 Transactions <i class="m-icon-swapright"></i>
+										<a class="title" href="javascript:void(0);">
+											 Vendors <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
 								</div>
@@ -1030,12 +1524,12 @@
 									<div class="easy-pie-chart">
 										<div class="number visits" data-percent="85">
 											<span>
-												 +85
+												 <?php echo @$this->data['CargoCount']; ?>
 											</span>
-											 %
+											 <!--%-->
 										</div>
-										<a class="title" href="#">
-											 New Visits <i class="m-icon-swapright"></i>
+										<a class="title" href="javascript:void(0);">
+											 Commodities <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
 								</div>
@@ -1045,76 +1539,22 @@
 									<div class="easy-pie-chart">
 										<div class="number bounce" data-percent="46">
 											<span>
-												 -46
+												 <?php echo @$this->data['ClientInteractionCount']; ?>
 											</span>
-											 %
+											 
 										</div>
-										<a class="title" href="#">
-											 Bounce <i class="m-icon-swapright"></i>
+										<a class="title" href="javascript:void(0);">
+											 Client Interactions <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<div class="portlet box blue">
-						<div class="portlet-title">
-							<div class="caption">
-								<i class="fa fa-calendar"></i>Server Stats
-							</div>
-							<div class="tools">
-								<a href="" class="collapse">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config">
-								</a>
-								<a href="" class="reload">
-								</a>
-								<a href="" class="remove">
-								</a>
-							</div>
-						</div>
-						<div class="portlet-body">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="sparkline-chart">
-										<div class="number" id="sparkline_bar">
-										</div>
-										<a class="title" href="#">
-											 Network <i class="m-icon-swapright"></i>
-										</a>
-									</div>
-								</div>
-								<div class="margin-bottom-10 visible-sm">
-								</div>
-								<div class="col-md-4">
-									<div class="sparkline-chart">
-										<div class="number" id="sparkline_bar2">
-										</div>
-										<a class="title" href="#">
-											 CPU Load <i class="m-icon-swapright"></i>
-										</a>
-									</div>
-								</div>
-								<div class="margin-bottom-10 visible-sm">
-								</div>
-								<div class="col-md-4">
-									<div class="sparkline-chart">
-										<div class="number" id="sparkline_line">
-										</div>
-										<a class="title" href="#">
-											 Load Rate <i class="m-icon-swapright"></i>
-										</a>
-									</div>
-								</div>
+								</div>								
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="clearfix">
-			</div>*/ ?>
+			</div>
 
 			<?php /*<div class="row ">
 				<div class="col-md-6 col-sm-6">
@@ -2269,9 +2709,10 @@
 					<!-- END PORTLET-->
 				</div>
 			</div> */ ?>
-			<center><img src="<?php echo ASSETS_PATH; ?>img/logo-big.png" alt=""></center>
+			<?php /*<center><img src="<?php echo ASSETS_PATH; ?>img/logo-big.png" alt=""></center>
 			<br>
 			<center><h1>You now logged in to <b><?php echo $_SESSION['branch_name'];?></b>  Branch.Please continue...</h1></center>
+			*/ ?>
 		</div>
 	</div>
 	<!-- END CONTENT -->
