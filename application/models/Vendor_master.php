@@ -106,6 +106,17 @@ class Vendor_master extends CI_Model{
 
    }
 
+   public function addAccountledgerfileno($data){
+    if(empty($data))
+      return FALSE;
+
+    $result = array('vendor_name'=>$data['vendor_name'],'vendor_date'=>$data['ledger_date'],'narration'=>$data['ledger_narration'],'ledger_number'=>@$data['ledger_number'],'ledger_type'=>$data['ledger_type'],'ledger_amount'=>$data['ledger_amount'],'credit_amount'=>@$data['credit_amount'],'debit_amount'=>@$data['debit_amount'],' balance_amount'=>@$data['balance_amount'],'file_no'=>@$data['file_no'],'invoice_no'=>@$data['invoice_no'],'invoice_amt'=>@$data['invoice_amt'],'entry_user_id'=>$data['user_id'],'entry_date'=>$data['dt'],'is_active'=>1,'user_comp_id'=>$data['user_comp_id'],'user_branch_id'=>$data['user_branch_id'],'op_year'=>@$_SESSION['operatingyear']);
+    //print_r($result);exit;
+    $this->db->insert('agrimin_account_ledger',$result);
+    return $this->db->insert_id();
+
+   }
+
    function getAccountledgerById($params){  //$id
 
         $querystring = "SELECT * FROM agrimin_account_ledger Where vendor_name =".$params." order by id";
@@ -180,7 +191,7 @@ class Vendor_master extends CI_Model{
    function getAllAccountledger($data){ 
 
         $querystring = 'SELECT aal.*,avm.id vendor_id,avm.vendor_name vendor FROM agrimin_account_ledger aal left join agrimin_vendor_master avm ON aal.vendor_name=avm.id Where aal.is_active = 1 and date(aal.vendor_date) >= "'.date('Y-m-d',strtotime($data['fin_from_date'])).'" and date(aal.vendor_date) <= "'.date('Y-m-d',strtotime($data['fin_to_date'])).'" and aal.user_comp_id = "'.$_SESSION['comp_id'].'" and aal.user_branch_id = "'.$_SESSION['branch_id'].'" Order by aal.id desc'; //aal.id
-
+        //echo $querystring;exit;
         $queryforpubid = $this->db->query($querystring);
 
         $result = $queryforpubid->result_array();
@@ -293,5 +304,67 @@ class Vendor_master extends CI_Model{
         return $result;
 
     }  
+
+    function getAllFiledata(){ 
+
+        $querystring = 'SELECT aft.file_no,aft.id file_id FROM agrimin_fileregister_transaction aft Where aft.user_comp_id = "'.$_SESSION['comp_id'].'" and aft.user_branch_id = "'.$_SESSION['branch_id'].'" and aft.op_year = "'.$_SESSION['operatingyear'].'" and aft.file_no !=""';
+        //$querystring = 'SELECT aft.file_no,aft.id file_id FROM agrimin_fileregister_transaction aft Where aft.user_comp_id = "'.$_SESSION['comp_id'].'" and aft.user_branch_id = "'.$_SESSION['branch_id'].'" and aft.file_no !=""';
+        //echo $querystring;exit;
+        $queryforpubid = $this->db->query($querystring);
+
+        $result = $queryforpubid->result_array();
+        return $result;
+
+    }
+
+    function fetch_inv_byfileno($file_id)
+    {
+  
+      $querystring = 'SELECT aim.* FROM agrimin_invoice_master aim,agrimin_fileregister_transaction aft WHERE aft.id=aim.file_no and aft.file_no= "'.$file_id.'"';
+      $queryforpubid = $this->db->query($querystring);
+
+      $result = $queryforpubid->result_array();
+      $output = '<option value="">Select Invoice</option>';
+      foreach($result as $row)
+      {
+         $output .= '<option value="'.$row['invoice_no'].'">'.$row['invoice_no'].'</option>';
+      };
+
+      return $output;
+
+    }
+
+    public function getInvoiceDetailsByInvno($params){  //$id
+
+        $querystring =  "SELECT invoice_amt from agrimin_invoice_master Where invoice_no = '".$params."'";
+        $queryforpubid = $this->db->query($querystring);
+
+        $result = $queryforpubid->result_array();
+        //print_r($result);exit;
+        return $result[0]['invoice_amt'];
+
+    }
+
+    function getFileDetailsByFileNo($params){  //$id
+
+        $querystring = "SELECT * FROM agrimin_fileregister_transaction aft Where aft.file_no ='".$params."' and aft.user_comp_id = '".$_SESSION['comp_id']."' and aft.user_branch_id = '".$_SESSION['branch_id']."' and aft.file_no !=''";
+        //echo $querystring;exit;
+        $queryforpubid = $this->db->query($querystring);
+
+        $result = $queryforpubid->result_array();
+        return $result;
+
+    }
+
+    public function getInvoiceByInvno($params){  //$id
+
+        $querystring =  "SELECT invoice_amt from agrimin_invoice_master Where invoice_no = '".$params."'";
+        $queryforpubid = $this->db->query($querystring);
+
+        $result = $queryforpubid->result_array();
+        //print_r($result);exit;
+        return $result[0]['invoice_amt'];
+
+    }   
 
 }

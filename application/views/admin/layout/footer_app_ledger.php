@@ -91,6 +91,7 @@
            Custom.initInvoiceTypeMaster();
            Custom.initVendorMaster();
            Custom.initAccountLedger();
+           Custom.initAccountLedgerFileno();
            ComponentsDropdowns.init();
            //FormFileUpload.init();
            TableAdvanced.init(); 
@@ -710,6 +711,45 @@
                });
              }
         });
+
+      $('#ledger_file_no').change(function(){
+            var ledger_file_no = $('#ledger_file_no').val();
+            //alert(ledger_file_no);
+
+            if(ledger_file_no != '')
+             {
+               $.ajax({
+               'url' : '<?php echo BASE_PATH; ?>Addaccountledgerfileno/fetch_inv_byfileno',
+               'type': 'post',
+               'data' : { ledger_file_no : ledger_file_no},
+               'success' : function(data)
+               {
+                 //alert(data);
+                 $('#ledger_invoice_no').html(data);
+                 $('#ledger_invoice_amt').val('');
+               } 
+               });
+             }
+      })
+
+      $('#ledger_invoice_no').change(function(){
+            var ledger_invoice_no = $('#ledger_invoice_no').val();
+            //alert(ledger_invoice_no);  
+            if(ledger_invoice_no != '')
+             {
+               $.ajax({
+               'url' : '<?php echo BASE_PATH; ?>Addaccountledgerfileno/fetch_inv_amt',
+               'type': 'post',
+               'data' : { ledger_invoice_no : ledger_invoice_no},
+               'success' : function(data)
+               {
+                 //alert(data);
+                 $('#ledger_invoice_amt').val(data);
+               } 
+               });
+             }
+
+      })    
 
     </script>
 <!-- END JAVASCRIPTS -->

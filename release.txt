@@ -1,5 +1,15 @@
 ### This file is maintained by Shivaji Dalvi for release changes purpose
 
+Date : 20/09/2021
+Changes : Account Ledger Fileno changes
+Old Changes path : /public_html/account_ledger_file_no/account_ledger_file_no_20092021.zip
+New Changes path on local : /to_server/account_ledger_file_no/
+===========================================================================================
+Date : 17/09/2021
+Changes : Switzerland branch address change
+Old Changes path : /public_html/switzerland_address_change/switzerland_address_change_17092021.zip
+New Changes path on local : /to_server/switzerland_address_change/
+===========================================================================================
 Date : 19/08/2021
 Changes : file_docs_by_mail
 Old Changes path : /public_html/file_docs_by_mail/file_docs_by_mail_19082021.zip

@@ -2915,6 +2915,105 @@ var Custom = function () {
         }, 
         ////////// Account Ledger Validation Ends
 
+
+        //////////Account Ledger File No Validation Starts
+        initAccountLedgerFileno: function () {
+            $('.accountledgerfileno-form').validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                rules: {
+                    vendor_name: {
+                        required: true
+                    },
+                    ledger_date: {
+                        required: true
+                    },
+                    ledger_narration: {
+                        required: true
+                    },
+                    ledger_number: {
+                        required: true
+                    },
+                    ledger_type: {
+                        required: true
+                    },
+                    ledger_amount: {
+                        required: true
+                    },
+                    ledger_file_no: {
+                        required: true
+                    },
+                    //invoice_no: {
+                        //required: true
+                    //},
+                    //invoice_amt: {
+                        //required: true
+                    //},
+                    remember: {
+                        required: false
+                    }
+                },
+
+                messages: {
+                    vendor_name: {
+                        name: "This Field is required."
+                    },
+                    ledger_date: {
+                        required: "This Field is required."
+                    },
+                    ledger_narration: {
+                        required: "This Field is required."
+                    },
+                    ledger_number: {
+                        required: "This Field is required."
+                    },
+                    ledger_type: {
+                        required: "This Field is required."
+                    },
+                    ledger_amount: {
+                        required: "This Field is required."
+                    },
+                    ledger_file_no: {
+                        required: "This Field is required."
+                    },
+                    //invoice_no: {
+                        //required: "This Field is required."
+                    //},
+                    //invoice_amt: {
+                        //required: "This Field is required."
+                    //},
+                    invoice_incharge: {
+                        required: "Invoice Incharge is required."
+                    }
+                },
+
+                invalidHandler: function (event, validator) { //display error alert on form submit   
+                    $('.alert-danger', $('.accountledgerfileno-form')).show();
+                },
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.closest('.input-icon'));
+                },
+
+                submitHandler: function (form) {
+                    form.submit(); // form validation success, call ajax form submit
+                }
+            });
+
+        }, 
+        ////////// Account Ledger  File No Validation Ends
+
         
         //////////maildocsmaster Validation Starts
         initMailDocsMaster: function () {
