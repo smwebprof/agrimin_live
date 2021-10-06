@@ -95,4 +95,20 @@ class Report_master extends CI_Model{
 
     } 
 
+    function getAllFiledata($status){ 
+
+        $search = '';
+        if ($status) {
+          $search .= ' and aft.status = "'.$status.'"';
+        }
+        //echo $search;exit;
+        $querystring =  "SELECT aft.*,acm.client_name,accm.commodity_name,aum.unit_name, aiem.name import_export,acgm.name cargo_group  FROM agrimin_fileregister_transaction aft left join agrimin_client_master acm ON acm.id=aft.client_id left join agrimin_cargo_master accm ON accm.id=aft.cargo_id left join agrimin_unit_master aum ON aum.id=aft.approx_unit left join agrimin_import_export_master aiem ON aiem.id=aft.import_export left join agrimin_cargo_group_master acgm ON acgm.id=aft.cargo_group_id Where aft.is_active = 1 and aft.user_comp_id = '".$_SESSION['comp_id']."' and aft.user_branch_id = '".$_SESSION['branch_id']."' and aft.op_year = '".$_SESSION['operatingyear']."' ".$search." order by aft.id desc";
+        //echo $querystring;exit;
+        $queryforpubid = $this->db->query($querystring);
+
+        $result = $queryforpubid->result_array();
+        return $result;
+
+    }
+
 }

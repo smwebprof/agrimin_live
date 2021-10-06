@@ -115,9 +115,9 @@
 						<p>
 							 <u><h5>You now logged in to <b><?php echo $_SESSION['branch_name'];?></b>  Branch.Please continue...</h5></u>
 						</p>
-						<p>
+						<!--<p>
 							 <font color='red'>***</font> Dashboard Data is displayed as per current financial year.
-						</p>
+						</p>-->
 						<p>
 							 <font color='red'>***</font> Dashboard page is auto refresh every 10 mins.
 						</p>
@@ -140,7 +140,7 @@
 								 Total Files Created
 							</div>
 						</div>
-						<a class="more" href="javascript:void(0);">
+						<a class="more" href="<?php echo BASE_PATH; ?>viewfilereport">
 							 View more <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -158,7 +158,7 @@
 								 Total Invoices Created
 							</div>
 						</div>
-						<a class="more" href="javascript:void(0);">
+						<a class="more" href="<?php echo BASE_PATH; ?>viewinvoicefilereport">
 							 View more <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -182,7 +182,7 @@
 								 <?php echo $this->data['invoice_rec_amt']; ?>$
 							</div>
 						</div>
-						<a class="more" href="javascript:void(0);">
+						<a class="more" href="<?php echo BASE_PATH; ?>Viewfileinvoicepayment">
 							 View more <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -200,7 +200,7 @@
 								 Total Clients
 							</div>
 						</div>
-						<a class="more" href="javascript:void(0);">
+						<a class="more" href="<?php echo BASE_PATH; ?>viewclientmaster">
 							 View more <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -1413,7 +1413,7 @@
 											</span>
 											 <!--%-->
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewfilereport">
 											 Total Files <i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1428,7 +1428,7 @@
 											</span>
 											 <!--%-->
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewfilereport?st=Completed">
 											 Completed <i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1443,7 +1443,7 @@
 											</span>
 											 
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewfilereport?st=Pending">
 											 Pending <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1456,7 +1456,7 @@
 											</span>
 											 
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewfilereport?st=Invoiced">
 											 Invoiced <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1469,7 +1469,7 @@
 											</span>
 											 
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewfilereport?st=Cancelled">
 											 <font color="red">Cancelled</font> <i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1482,7 +1482,7 @@
 											</span>
 											 
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewfilereport?st=Running">
 											 Running <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1513,7 +1513,7 @@
 											</span>
 											 <!--%-->
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>Viewvendormaster">
 											 Vendors <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1528,7 +1528,7 @@
 											</span>
 											 <!--%-->
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewcargomaster">
 											 Commodities <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>
@@ -1543,7 +1543,7 @@
 											</span>
 											 
 										</div>
-										<a class="title" href="javascript:void(0);">
+										<a class="title" href="<?php echo BASE_PATH; ?>viewinteractionreport">
 											 Client Interactions <br/><i class="m-icon-swapright"></i>
 										</a>
 									</div>

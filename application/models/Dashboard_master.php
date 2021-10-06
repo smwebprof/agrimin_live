@@ -75,7 +75,8 @@ class Dashboard_master extends CI_Model{
 
     function getAllInvoicedata(){ 
 
-        $querystring = 'SELECT count(*) invoicecount FROM agrimin_invoice_master aim Where aim.user_comp_id = "'.$_SESSION['comp_id'].'" and aim.user_branch_id = "'.$_SESSION['branch_id'].'" and aim.op_year = "'.$_SESSION['operatingyear'].'"';
+        //$querystring = 'SELECT count(*) invoicecount FROM agrimin_invoice_master aim Where aim.user_comp_id = "'.$_SESSION['comp_id'].'" and aim.user_branch_id = "'.$_SESSION['branch_id'].'" and aim.op_year = "'.$_SESSION['operatingyear'].'"';
+        $querystring = 'SELECT count(*) invoicecount FROM agrimin_invoice_master aim Where aim.user_comp_id = "'.$_SESSION['comp_id'].'" and aim.user_branch_id = "'.$_SESSION['branch_id'].'"';
         //echo $querystring;exit;
         $queryforpubid = $this->db->query($querystring);
 
