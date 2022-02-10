@@ -241,11 +241,11 @@ class Addfileregisterinsp extends CI_Controller {
 		        $this->email->set_newline("\r\n");
 
 		        $config['protocol'] = 'smtp';
-		        $config['smtp_host'] = 'agrimincontrol.com';
+		        $config['smtp_host'] = 'cp-ht-10.webhostbox.net';  // agrimincontrol.com  162.241.148.160
 		        $config['smtp_port'] = '587';
 		        $config['smtp_user'] = 'admin@agrimincontrol.com';
 		        $config['smtp_from_name'] = 'AGRIMIN Admin (Do_Not_Reply)';
-		        $config['smtp_pass'] = '~Iec,=0v~iAk';
+		        $config['smtp_pass'] = '#3l~*dDuo-YV'; // ~Iec,=0v~iAk
 		        $config['wordwrap'] = TRUE;
 		        $config['newline'] = "\r\n";
 		        $config['mailtype'] = 'html';

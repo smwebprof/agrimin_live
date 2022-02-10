@@ -44,7 +44,15 @@ class Pdfinvoice extends TCPDF
 
         // Logo
         if ($_SESSION['country_code']=='CH') {
-           $image_file = BASE_PATH.'/assets/img/logo-ch.jpg'; 
+           if ($result[0]['file_id']>778) {
+              $image_file = BASE_PATH.'/assets/img/logo-ch7.jpg';
+           } else if ($result[0]['file_id']>529) {
+              $image_file = BASE_PATH.'/assets/img/logo-ch3.jpg';
+           } else {
+              $image_file = BASE_PATH.'/assets/img/logo-ch.jpg';
+           }   
+
+           //$image_file = BASE_PATH.'/assets/img/logo-ch.jpg'; 
            $this->Image($image_file, 30, 10, 151, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
                    // Set font
            $this->SetFont('helvetica', 'B', 20);

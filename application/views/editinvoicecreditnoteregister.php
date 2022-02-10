@@ -193,13 +193,15 @@
 												   	echo '<p>'.@$this->data['errors'].'</p>';
 
 												   if (@$_GET['msg']==1) { echo '<font size="3" color="red">Data Saved Succesfully</font>'; }
-												   if (@$_GET['msg']==2) { echo '<font size="3" color="red">Credit Note Amount is Greater than Invoice Amount</font>'; }		
+												   if (@$_GET['msg']==2) { echo '<font size="3" color="red">Credit Note Amount is Greater than Invoice Balance Amount</font>'; }		
 											?>
 											<div class="form-body">
 												<?php
 												if (isset($this->data['credit_details'])) {?>
 												<form action="" method="post" class="form-horizontal creditnoteregister-form" name="invoice_details">
 												<input type="hidden" name="credit_id" value="<?php echo $this->data['credit_details'][0]['id']; ?>">
+												<input type="hidden" name="invoice_id" value="<?php echo $this->data['credit_details'][0]['invoice_id']; ?>">
+												<input type="hidden" name="file_id" value="<?php echo $this->data['credit_details'][0]['file_id']; ?>">
 												<input type="hidden" name="invoice_add" value="Edit">
 												<input type="hidden" name="invoice_tax_amt" id="invoice_tax_amt" value="">
 
@@ -319,6 +321,19 @@
 													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
+															<label class="control-label col-md-3">Invoice Balance Amount</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="" name="invoice_balane_amt" id="invoice_balane_amt" value="<?php echo $credit_details['invoice_balane_amt']; ?>" readonly>
+																<span for="invoice_balane_amt" class="help-block"></span>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
 															<label class="control-label col-md-3">Status</label>
 															<div class="col-md-9">
 																<select class="form-control" id="credit_status" name="credit_status">
@@ -330,9 +345,6 @@
 														</div>
 													</div>
 													<!--/span-->
-												</div>
-												<!--/row-->
-												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label col-md-3">Kind Attention*</label>
@@ -343,6 +355,9 @@
 														</div>
 													</div>
 													<!--/span-->
+												</div>
+												<!--/row-->
+												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group credit_remarks">
 															<label class="control-label col-md-3">Remarks</label>
@@ -352,6 +367,16 @@
 															</div>
 														</div>
 													</div>
+													<!--/span-->
+													<!--<div class="col-md-6">
+														<div class="form-group credit_remarks">
+															<label class="control-label col-md-3">Remarks</label>
+															<div class="col-md-9">
+																<textarea class="form-control credit_remarks" rows="3" name="credit_remarks" id="credit_remarks" maxlength="200"></textarea>
+																<span for="credit_remarks" class="help-block"></span>
+															</div>
+														</div>
+													</div>-->
 													<!--/span-->
 												</div>
 												<!--/row-->

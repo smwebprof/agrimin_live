@@ -40,16 +40,36 @@ class Invoicecreditnoteregister extends CI_Controller {
         if (@$_POST) {
         		//print_r($_POST);exit;
 
-        	    if ($_POST['invoice_total_full_amt'] > $_POST['invoice_amt']) {
-                	$redirect_url = BASE_PATH."Invoicecreditnoteregister?id=".base64_encode($id)."&msg=2";
-                	redirect($redirect_url);
-            	}
+        	    if (!empty($_POST['invoice_bal_amt'])) { 
+	        	    if ($_POST['invoice_total_full_amt'] > $_POST['invoice_bal_amt']) {
+	                	$redirect_url = BASE_PATH."Invoicecreditnoteregister?id=".base64_encode($id)."&msg=2";
+	                	redirect($redirect_url);
+	            	}
+	            } else {
+	            	if ($_POST['invoice_total_full_amt'] > $_POST['invoice_amt']) {
+	                	$redirect_url = BASE_PATH."Invoicecreditnoteregister?id=".base64_encode($id)."&msg=3";
+	                	redirect($redirect_url);
+	            	}
+	            }
+	            
+            	if (!empty($_POST['invoice_total_full_amt'])) { 
+            		if (!empty($_POST['invoice_bal_amt'])) { 
+            			$invoice_credit_amt = (float)$_POST['invoice_bal_amt'] - (float)$_POST['invoice_total_full_amt'];	
+            		} else {
+            			$invoice_credit_amt = (float)$_POST['invoice_amt'] - (float)$_POST['invoice_total_full_amt'];	
+            		}	        			
+        		} else { 
+        			$invoice_credit_amt = (float)$_POST['invoice_total_full_amt'];
+        		}
+        		//echo $invoice_credit_amt;exit;
+
 
         		$_POST['user_id'] = @$_SESSION['userId']; 
 	        	$dt = gmdate('Y-m-d H:i:s');
 	        	$_POST['dt'] = $dt;
 	        	$_POST['user_comp_id'] = @$_SESSION['comp_id']; 
 	        	$_POST['user_branch_id'] = @$_SESSION['branch_id'];
+	        	$_POST['invoice_credit_amt'] = @$invoice_credit_amt;        		
 
 	        	$resultdata = $this->Credit_master->addCreditDataNew($this->input->post()); 
           
@@ -77,6 +97,41 @@ class Invoicecreditnoteregister extends CI_Controller {
                 #$updateinvoiceno['invoice_id'] = $invoiceId;
                 //print_r($updateinvoiceno);exit;
                 $updateInvoiceNoData = $this->Credit_master->updateCreditNo($updateinvoiceno);
+
+
+                if ($invoice_credit_amt=='0.00') { 
+        			// Update Invoice master table
+        			$_POST['invoice_balane_amt'] = $invoice_credit_amt;
+        			$_POST['invoice_credit_amt'] = $_POST['invoice_total_full_amt'];
+                	$invoicedata = $this->Credit_master->UpdateInvoiceBalance($this->input->post());
+
+                	//Update Payment master table
+                	$_POST['invoice_balane_amt'] = $invoice_credit_amt;
+        			$_POST['invoice_credit_amt'] = $_POST['invoice_total_full_amt'];
+
+                	$invoicedata = $this->Credit_master->UpdatePaymentBalance($this->input->post());
+
+                	$UpdateInvoiceData = $this->Invoice_master->UpdateInvoiceStatus($this->input->post());
+
+                	$UpdatecredtInvoiceData = $this->Credit_master->UpdateCreditInvoiceStatus($this->input->post());
+
+                	$invoice_status = $this->Invoice_master->getInvoiceStatusById($_POST['file_id']);
+
+        			if ($invoice_status==1) { 
+        				$_POST['invoice_file_no'] = $_POST['file_id']; 
+        				$UpdateFileData = $this->Invoice_master->UpdateInvoicePaymentDataByFile($this->input->post());
+        			}
+        		} else {
+        			$_POST['invoice_balane_amt'] = $invoice_credit_amt;
+        			$_POST['invoice_credit_amt'] = $_POST['invoice_total_full_amt'];
+                	$invoicedata = $this->Credit_master->UpdateInvoiceBalance($this->input->post());
+
+                	//Update Payment master table
+                	$_POST['invoice_balane_amt'] = $invoice_credit_amt;
+        			$_POST['invoice_credit_amt'] = $_POST['invoice_total_full_amt'];
+
+                	$invoicedata = $this->Credit_master->UpdatePaymentBalance($this->input->post());
+        		}      
 
         		$viewinvoice = BASE_PATH."Viewinvoicecreditnoteregister?msg=1";
             	redirect($viewinvoice);        

@@ -11,7 +11,7 @@ class Credit_master extends CI_Model{
 
         #$invoice_id = explode("|",@$data['invoice_id']);
 
-        $result = array('invoice_id'=>@$data['invoice_id'],'invoice_no'=>@$data['invoice_no'],'file_id'=>$data['file_id'],'file_no'=>$data['file_no'],'invoice_date'=>@$data['invoice_date'],'client_id'=>$data['client_id'],'kind_attention'=>$data['client_contact'],'inspection_date'=>@$data['inspection_date'],'inspection_start_date'=>@$data['inspection_start_date'],'inspection_end_date'=>@$data['inspection_end_date'],'vessel_name'=>@$data['vessel_name'],'voyage_no'=>@$data['voyage_no'],'cargo_group'=>@$data['cargo_group'],'cargo_master'=>$data['cargo_master'],'approx_qty'=>$data['approx_qty'],'approx_unit'=>$data['approx_unit'],'load_port'=>$data['load_port'],'discharge_port'=>$data['discharge_port'],'credit_remarks'=>$data['credit_remarks'],'credit_note_currency'=>@$data['invoice_currency'],'credit_note_ex_rate'=>@$data['invoice_ex_rate'],'credit_note_basic_ex_amt'=>@$data['invoice_basic_ex_amt'],'credit_note_basic_amt'=>@$data['invoice_subtotal_amt'],'credit_note_vat_percent'=>@$data['invoice_total_vat_percnt'],'credit_note_tax_amt'=>@$data['invoice_total_tax_amt'],'credit_note_discount'=>@$data['invoice_total_discount'],'credit_note_discount_amt'=>@$data['invoice_total_disc_amt'],'credit_note_amt'=>@$data['invoice_total_full_amt'],'bill_lading_no'=>@$data['bill_lading_no'],'bill_lading_date'=>@$data['bill_lading_date'],'invoice_desc'=>@$data['inv_desc_details'],'invoice_tot_amt'=>@$data['invoice_amt'],'entry_user_id'=>$data['user_id'],'entry_date'=>$data['dt'],'is_active'=>1,'user_comp_id'=>$data['user_comp_id'],'user_branch_id'=>$data['user_branch_id'],'op_year'=>@$_SESSION['operatingyear']);
+        $result = array('invoice_id'=>@$data['invoice_id'],'invoice_no'=>@$data['invoice_no'],'file_id'=>$data['file_id'],'file_no'=>$data['file_no'],'invoice_date'=>@$data['invoice_date'],'client_id'=>$data['client_id'],'kind_attention'=>$data['client_contact'],'inspection_date'=>@$data['inspection_date'],'inspection_start_date'=>@$data['inspection_start_date'],'inspection_end_date'=>@$data['inspection_end_date'],'vessel_name'=>@$data['vessel_name'],'voyage_no'=>@$data['voyage_no'],'cargo_group'=>@$data['cargo_group'],'cargo_master'=>$data['cargo_master'],'approx_qty'=>$data['approx_qty'],'approx_unit'=>$data['approx_unit'],'load_port'=>$data['load_port'],'discharge_port'=>$data['discharge_port'],'credit_remarks'=>$data['credit_remarks'],'credit_note_currency'=>@$data['invoice_currency'],'credit_note_ex_rate'=>@$data['invoice_ex_rate'],'credit_note_basic_ex_amt'=>@$data['invoice_basic_ex_amt'],'credit_note_basic_amt'=>@$data['invoice_subtotal_amt'],'credit_note_vat_percent'=>@$data['invoice_total_vat_percnt'],'credit_note_tax_amt'=>@$data['invoice_total_tax_amt'],'credit_note_discount'=>@$data['invoice_total_discount'],'credit_note_discount_amt'=>@$data['invoice_total_disc_amt'],'credit_note_amt'=>@$data['invoice_total_full_amt'],'invoice_balane_amt'=>@$data['invoice_credit_amt'],'bill_lading_no'=>@$data['bill_lading_no'],'bill_lading_date'=>@$data['bill_lading_date'],'invoice_desc'=>@$data['inv_desc_details'],'invoice_tot_amt'=>@$data['invoice_amt'],'entry_user_id'=>$data['user_id'],'entry_date'=>$data['dt'],'is_active'=>1,'user_comp_id'=>$data['user_comp_id'],'user_branch_id'=>$data['user_branch_id'],'op_year'=>@$_SESSION['operatingyear']);
         //print_r($result);exit;
         $this->db->insert('agrimin_credit_note_master',$result);
         return $this->db->insert_id();
@@ -125,7 +125,7 @@ class Credit_master extends CI_Model{
    public function updateEditCreditData($data){
         //print_r($data);exit;
 
-        $result = array('kind_attention'=>$data['client_contact'],'inspection_date'=>@$data['inspection_dt'],'inspection_start_date'=>@$data['inspection_start_date'],'inspection_end_date'=>@$data['inspection_end_date'],'vessel_name'=>@$data['vessel_name'],'voyage_no'=>@$data['voyage_no'],'cargo_group'=>@$data['cargo_group'],'cargo_master'=>$data['cargo_master'],'approx_qty'=>$data['approx_qty'],'approx_unit'=>$data['approx_unit'],'load_port'=>$data['load_port'],'discharge_port'=>$data['discharge_port'],'credit_remarks'=>$data['credit_remarks'],'credit_note_currency'=>@$data['credit_note_currency'],'credit_note_ex_rate'=>@$data['credit_note_ex_rate'],'credit_note_basic_ex_amt'=>@$data['credit_note_basic_ex_amt'],'credit_note_basic_amt'=>@$data['invoice_subtotal_amt'],'credit_note_vat_percent'=>@$data['invoice_total_vat_percnt'],'credit_note_tax_amt'=>@$data['invoice_total_tax_amt'],'credit_note_discount'=>@$data['invoice_total_discount'],'credit_note_discount_amt'=>@$data['invoice_total_disc_amt'],'credit_note_amt'=>@$data['invoice_total_full_amt'],'bill_lading_no'=>@$data['bill_lading_no'],'bill_lading_date'=>@$data['bill_lading_date'],'invoice_desc'=>@$data['inv_desc_details'],'invoice_tot_amt'=>@$data['invoice_tot_amt'],'status'=>@$data['credit_status'],'modify_user_id'=>$data['user_id'],'modify_date'=>$data['dt'],'is_active'=>1,'user_comp_id'=>$data['user_comp_id'],'user_branch_id'=>$data['user_branch_id'],'op_year'=>@$_SESSION['operatingyear']);
+        $result = array('kind_attention'=>$data['client_contact'],'inspection_date'=>@$data['inspection_dt'],'inspection_start_date'=>@$data['inspection_start_date'],'inspection_end_date'=>@$data['inspection_end_date'],'vessel_name'=>@$data['vessel_name'],'voyage_no'=>@$data['voyage_no'],'cargo_group'=>@$data['cargo_group'],'cargo_master'=>$data['cargo_master'],'approx_qty'=>$data['approx_qty'],'approx_unit'=>$data['approx_unit'],'load_port'=>$data['load_port'],'discharge_port'=>$data['discharge_port'],'credit_remarks'=>$data['credit_remarks'],'credit_note_currency'=>@$data['credit_note_currency'],'credit_note_ex_rate'=>@$data['credit_note_ex_rate'],'credit_note_basic_ex_amt'=>@$data['credit_note_basic_ex_amt'],'credit_note_basic_amt'=>@$data['invoice_subtotal_amt'],'credit_note_vat_percent'=>@$data['invoice_total_vat_percnt'],'credit_note_tax_amt'=>@$data['invoice_total_tax_amt'],'credit_note_discount'=>@$data['invoice_total_discount'],'credit_note_discount_amt'=>@$data['invoice_total_disc_amt'],'credit_note_amt'=>@$data['invoice_total_full_amt'],'invoice_balane_amt'=>@$data['invoice_balane_amt'],'bill_lading_no'=>@$data['bill_lading_no'],'bill_lading_date'=>@$data['bill_lading_date'],'invoice_desc'=>@$data['inv_desc_details'],'invoice_tot_amt'=>@$data['invoice_tot_amt'],'status'=>@$data['credit_status'],'modify_user_id'=>$data['user_id'],'modify_date'=>$data['dt'],'is_active'=>1,'user_comp_id'=>$data['user_comp_id'],'user_branch_id'=>$data['user_branch_id'],'op_year'=>@$_SESSION['operatingyear']);
         //print_r($result);exit;
         $this->db->where('id', $data['credit_id']);
         $this->db->limit(1);
@@ -155,7 +155,7 @@ class Credit_master extends CI_Model{
 
     function getAllCreditNotedataByStatus(){  
 
-        $querystring =  "SELECT aim.*,acnm.id credit_note_id,acnm.credit_note_no,acnm.invoice_no credit_note_invoice_no,acnm.entry_date,acnm.modify_date credit_date,acnm.status credit_status,acnm.credit_note_amt,acnm.credit_note_tax_amt,acnm.credit_note_basic_amt FROM agrimin_invoice_master aim left join agrimin_credit_note_master acnm on aim.id=acnm.invoice_id WHERE aim.user_comp_id = '".$_SESSION['comp_id']."' and aim.user_branch_id = '".$_SESSION['branch_id']."' and aim.is_active = 1 and aim.invoice_type='Final' order by aim.id desc";
+        $querystring =  "SELECT aim.*,acnm.id credit_note_id,acnm.credit_note_no,acnm.invoice_no credit_note_invoice_no,acnm.entry_date,acnm.modify_date credit_date,acnm.status credit_status,acnm.credit_note_amt,acnm.credit_note_tax_amt,acnm.credit_note_basic_amt FROM agrimin_invoice_master aim left join agrimin_credit_note_master acnm on aim.id=acnm.invoice_id WHERE aim.user_comp_id = '".$_SESSION['comp_id']."' and aim.user_branch_id = '".$_SESSION['branch_id']."' and aim.is_active = 1 and aim.invoice_type='Final' and aim.status!='Closed' order by aim.id desc";
 
         $queryforpubid = $this->db->query($querystring);
 
@@ -186,7 +186,7 @@ class Credit_master extends CI_Model{
           $search .= ' and aim.client_id = "'.$data['clients_name'].'"';
        } 
 
-        $querystring =  "SELECT aim.*,acnm.id credit_note_id,acnm.credit_note_no,acnm.invoice_no credit_note_invoice_no,acnm.entry_date ,acnm.status credit_status,acnm.credit_note_amt,acnm.credit_note_tax_amt,acnm.credit_note_basic_amt FROM agrimin_invoice_master aim left join agrimin_credit_note_master acnm on aim.id=acnm.invoice_id WHERE aim.user_comp_id = '".$_SESSION['comp_id']."' and aim.user_branch_id = '".$_SESSION['branch_id']."' and aim.is_active = 1 and aim.invoice_type='Final' $search order by aim.id desc";
+        $querystring =  "SELECT aim.*,acnm.id credit_note_id,acnm.credit_note_no,acnm.invoice_no credit_note_invoice_no,acnm.entry_date ,acnm.status credit_status,acnm.credit_note_amt,acnm.credit_note_tax_amt,acnm.credit_note_basic_amt FROM agrimin_invoice_master aim left join agrimin_credit_note_master acnm on aim.id=acnm.invoice_id WHERE aim.user_comp_id = '".$_SESSION['comp_id']."' and aim.user_branch_id = '".$_SESSION['branch_id']."' and aim.is_active = 1 and aim.invoice_type='Final' $search order by aim.id desc"; // and aim.status!='Closed' 
 
         $queryforpubid = $this->db->query($querystring);
 
@@ -243,4 +243,73 @@ class Credit_master extends CI_Model{
         return (($this->db->affected_rows() > 0)?TRUE:FALSE);
 
     }
+
+    function UpdateInvoiceBalance($data){
+      //print_r($data);exit;
+      $result = array('invoice_balane_amt'=> @$data['invoice_balane_amt'],'invoice_credit_amt'=> @$data['invoice_credit_amt'],'modify_user_id'=>@$data['user_id'],'modify_date'=>@$data['dt']);
+      //print_r($result);exit;
+      $this->db->where('id', @$data['invoice_id']);
+      $this->db->limit(1);
+      $this->db->update('agrimin_invoice_master',$result);
+      return (($this->db->affected_rows() > 0)?TRUE:FALSE);
+
+   }
+
+   function UpdatePaymentBalance($data){
+      #print_r($data);exit;
+      $querystring =  "SELECT * FROM agrimin_payment_invoice_master apim WHERE apim.invoice_no =  '".@$data['invoice_id']."' order by id desc limit 1";
+
+      $queryforpubid = $this->db->query($querystring);
+
+      $result = $queryforpubid->result_array();
+      //print_r($result);exit;
+
+      $payment_id = $result[0]['id'];
+
+      $result = array('invoice_balane_amt'=> @$data['invoice_balane_amt'],'invoice_credit_amt'=> @$data['invoice_credit_amt'],'modify_user_id'=>@$data['user_id'],'modify_date'=>@$data['dt']);
+      //print_r($result);exit; 
+      $this->db->where('id', $payment_id);
+      $this->db->limit(1);
+      $this->db->update('agrimin_payment_invoice_master',$result);
+      return (($this->db->affected_rows() > 0)?TRUE:FALSE);
+
+   }
+
+   function UpdateInvoiceStatus($data){
+      //print_r($data);exit;
+      $result = array('status'=> 'Open','modify_user_id'=>@$data['user_id'],'modify_date'=>@$data['dt']);
+      //print_r($result);exit;
+      $this->db->where('id', @$data['invoice_id']);
+      $this->db->limit(1);
+      $this->db->update('agrimin_invoice_master',$result);
+      //print_r($this->db->last_query());exit;
+      return (($this->db->affected_rows() > 0)?TRUE:FALSE);
+
+   }
+
+   function UpdateInvoicePaymentDataByFile($data){
+      //print_r($data);exit;
+      $result = array('status'=> 'Invoiced','modify_user_id'=>@$data['user_id'],'modify_date'=>@$data['dt']);
+      //print_r($result);exit;
+      $this->db->where('id', $data['invoice_file_no']);
+      $this->db->limit(1);
+      $this->db->update('agrimin_fileregister_transaction',$result);
+      #print_r($this->db->last_query());exit;
+      return (($this->db->affected_rows() > 0)?TRUE:FALSE);
+
+   }
+
+   public function UpdateCreditInvoiceStatus($data){
+        //print_r($data);exit;
+
+        $result = array('status'=> 'Closed','modify_user_id'=>$data['user_id'],'modify_date'=>$data['dt']);
+        //print_r($result);exit;
+        $this->db->where('invoice_id', $data['invoice_id']);
+        $this->db->limit(1);
+        $this->db->update('agrimin_credit_note_master',$result);
+      
+        return (($this->db->affected_rows() > 0)?TRUE:FALSE);
+
+    }
+
 }

@@ -34,9 +34,13 @@ class Viewfileregisterinsp extends CI_Controller {
 
 
 		#print_r($_SESSION);exit;
+		if (@$_POST['submit']=='excel') {
+			$redirecturl = BASE_PATH."Viewexcelfileregisterinsp?file_from_date=".@$_POST['file_from_date']."&file_To_date=".@$_POST['file_To_date']."&file_no_type=".@$_POST['file_no_type']."&status=".@$_POST['status']."&clients_name=".@$_POST['clients_name']."&file_nos=".@$_POST['file_nos'];
+	        redirect($redirecturl);
+		}
 
 		if (@$_POST['viewfileregister']) {
-			#print_r($_POST);exit;
+			//print_r($_POST);exit;
 			//print_r($_SESSION);exit;
 			$mainmodule_id = 2;
 			$submodule_id = 1;

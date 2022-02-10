@@ -208,6 +208,9 @@
 								<div class="btn-group">
 									<button type="submit" class="btn green">Submit</button>
 								</div>
+								<div class="btn-group">
+									<button type="submit" class="btn yellow" name="submit" value="excel">View Excel Report</button>
+								</div>
 							</div>
 							<table class="table table-striped table-bordered table-hover" id="sample_2">
 							<thead>

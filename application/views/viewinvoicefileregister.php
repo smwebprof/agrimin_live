@@ -235,6 +235,9 @@
 								<div class="btn-group">
 									<button type="submit" class="btn green">Submit</button>
 								</div>
+								<div class="btn-group">
+									<button type="submit" class="btn yellow" name="submit" value="excel">View Excel Report</button>
+								</div>
 							</div>
 
 
@@ -357,9 +360,7 @@
 								<?php if ($this->data['access_right']['edit_rights'] == 1) { ?>
 								<td>
 									<?php if ($invoice_data['invoice_type'] != 'Final') { ?>
-									<?php #if ($invoice_data['status'] != 'Closed') { ?>
-									<?php  $invoice_status = array('Closed','Cancelled'); ?>
-									<?php  if (!in_array($invoice_data['status'], $invoice_status)) { ?>
+									<?php if ($invoice_data['status'] != 'Closed') { ?>
 									<span class="label label-sm label-success">
 										<?php if ($invoice_data['invoice_info'] == 'Single') { ?>
 										 <a href="<?php echo BASE_PATH; ?>EditInvoicefileregister?id=<?php echo base64_encode($invoice_data['id']); ?>"  style="color:#fff">Edit</a>
@@ -378,9 +379,7 @@
 									<?php } ?>
 									<?php } */ ?>
 									<?php if ($invoice_data['invoice_type'] != 'Final') { ?>
-									<?php #if ($invoice_data['status'] != 'Closed') { ?>
-									<?php  $invoice_status = array('Closed','Cancelled'); ?>
-									<?php  if (!in_array($invoice_data['status'], $invoice_status)) { ?>
+									<?php if ($invoice_data['status'] != 'Closed') { ?>
 									<span class="label label-sm label-danger">
 										 <a href="<?php echo BASE_PATH; ?>Deleteinvoicefileregister?id=<?php echo base64_encode($invoice_data['id']); ?>"  style="color:#fff">Delete</a>
 									</span>

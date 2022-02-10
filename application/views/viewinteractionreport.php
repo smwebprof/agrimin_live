@@ -123,7 +123,7 @@
 								<div class="btn-group">
 									<label class="control-label col-md-3">From Date</label>
 									<div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="-6m">
-									<input type="text" class="form-control" name="file_from_date" id="file_from_date" value="<?php if (@$this->data['file_from_date']) { echo $this->data['file_from_date']; } else { echo date('d-m-Y'); } ?>"readonly>
+									<input type="text" class="form-control" name="file_from_date" id="file_from_date" value="<?php if (@$this->data['file_from_date']) { echo $this->data['file_from_date']; } else { /*echo date('d-m-Y');*/ } ?>"readonly>
 									<span for="file_date" class="help-block"></span>
 									<span class="input-group-btn">
 									<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
@@ -133,7 +133,7 @@
 								<div class="btn-group">
 									<label class="control-label col-md-3">To Date</label>
 									<div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="-6m">
-									<input type="text" class="form-control" name="file_To_date" id="file_To_date" value="<?php if (@$this->data['file_To_date']) { echo $this->data['file_To_date']; } else { echo date('d-m-Y'); } ?>"readonly>
+									<input type="text" class="form-control" name="file_To_date" id="file_To_date" value="<?php if (@$this->data['file_To_date']) { echo $this->data['file_To_date']; } else { /*echo date('d-m-Y');*/ } ?>"readonly>
 									<span for="file_date" class="help-block"></span>
 									<span class="input-group-btn">
 									<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
@@ -145,7 +145,7 @@
 										<tr>
 											<td><label class="control-label col-md-6">Clients Name</label>
 											</td>	
-											<td><select class="form-control input-large select2me" data-placeholder="Select..." name="clients_name" id="clients_name">
+											<td><select class="form-control input-medium select2me" data-placeholder="Select..." name="clients_name" id="clients_name">
 																	<option value=""></option>
 																	<?php
 													                $rows = $this->data['clients_data'];
@@ -170,7 +170,9 @@
 								<div class="btn-group">
 									<button type="submit" class="btn green">Submit</button>
 								</div>
-								
+								<div class="btn-group">
+									<button type="submit" class="btn yellow" name="submit" value="excel">View Excel Report</button>
+								</div>
 							</div>
 							<?php /*<div class="table-toolbar">
 								<div class="btn-group">

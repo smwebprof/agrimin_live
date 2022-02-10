@@ -49,7 +49,7 @@
 						</li>
 						<li>
 							<a href="#">
-								Masters
+								Invoices
 							</a>
 							<i class="fa fa-angle-right"></i>
 						</li>
@@ -185,7 +185,8 @@
 												   	echo '<p>'.@$this->data['errors'].'</p>';
 
 												   if (@$_GET['msg']==1) { echo '<font size="3" color="red">Data Saved Succesfully</font>'; }
-												   if (@$_GET['msg']==2) { echo '<font size="3" color="red">Credit Note Amount is Greater than Invoice Amount</font>'; }		
+												   if (@$_GET['msg']==2) { echo '<font size="3" color="red">Credit Note Amount is Greater than Invoice Balance Amount</font>'; }
+												   if (@$_GET['msg']==3) { echo '<font size="3" color="red">Credit Note Amount is Greater than Invoice Amount</font>'; }		
 											?>
 											<div class="form-body">
 												<?php
@@ -314,10 +315,10 @@
 													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Kind Attention*</label>
+															<label class="control-label col-md-3">Invoice Balance Amount</label>
 															<div class="col-md-9">
-																<input type="text" class="form-control" placeholder="" name="client_contact" id="client_contact" value="">
-																<span for="client_contact" class="help-block"></span>
+																<input type="text" class="form-control" placeholder="" name="invoice_bal_amt" id="invoice_bal_amt" value="<?php echo $invoice_details['invoice_balane_amt']; ?>" readonly>
+																<span for="invoice_bal_amt" class="help-block"></span>
 															</div>
 														</div>
 													</div>
@@ -327,6 +328,16 @@
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
+															<label class="control-label col-md-3">Kind Attention*</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="" name="client_contact" id="client_contact" value="">
+																<span for="client_contact" class="help-block"></span>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
 															<label class="control-label col-md-3">Credit Note Remarks</label>
 															<div class="col-md-9">
 																<textarea class="form-control" rows="3" name="credit_remarks" id="credit_remarks" maxlength="200"></textarea>
@@ -334,16 +345,6 @@
 															</div>
 														</div>
 													</div>
-													<!--/span-->
-													<?php /*<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label col-md-3">Kind Attention</label>
-															<div class="col-md-9">
-																<input type="text" class="form-control" placeholder="" name="client_contact" id="client_contact" value="">
-																<span for="client_contact" class="help-block"></span>
-															</div>
-														</div>
-													</div>*/ ?>
 													<!--/span-->
 												</div>
 												<!--/row-->

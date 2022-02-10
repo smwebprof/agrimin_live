@@ -32,6 +32,11 @@ class Viewinteractionreport extends CI_Controller {
 		$this->load->model('Client_master');
 		$this->load->model('Branch_master');
 
+		if (@$_POST['submit']=='excel') {
+			$redirecturl = BASE_PATH."Viewexcelinteractionreport?file_from_date=".@$_POST['file_from_date']."&file_To_date=".@$_POST['file_To_date']."&clients_name=".@$_POST['clients_name'];
+	        redirect($redirecturl);
+		}
+
 		if ($_POST) {
 			$mainmodule_id = 8;
 			$submodule_id = 30;

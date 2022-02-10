@@ -34,6 +34,12 @@ class Viewfileregister extends CI_Controller {
 
 
 		#print_r($_SESSION);exit;
+		
+
+		if (@$_POST['submit']=='excel') {
+			$redirecturl = BASE_PATH."Viewexcelfileregister?file_from_date=".@$_POST['file_from_date']."&file_To_date=".@$_POST['file_To_date']."&file_no_type=".@$_POST['file_no_type']."&status=".@$_POST['status']."&clients_name=".@$_POST['clients_name']."&file_nos=".@$_POST['file_nos'];
+	        redirect($redirecturl);
+		}
 
 		if (@$_POST['viewfileregister']) {
 			#print_r($_POST);exit;
@@ -87,7 +93,7 @@ class Viewfileregister extends CI_Controller {
 			$this->data['layout_body']='viewfileregister';
 
 			$result = $this->File_master->getAllFiledata();
-			//print_r($result);exit;
+	    	//print_r($result);exit;
 			$clients = $this->Client_master->getClientdataByBranchid($_SESSION['branch_id']);
 
 			$file_no_type = 'Single';

@@ -38,16 +38,45 @@ class Editinvoicecreditnoteregister extends CI_Controller {
         if (@$_POST) {
         	//print_r($_POST);exit;
 
-        	if ($_POST['invoice_total_full_amt'] > $_POST['invoice_tot_amt']) {
-                	$redirect_url = BASE_PATH."Editinvoicecreditnoteregister?id=".base64_encode($id)."&msg=2";
-                	redirect($redirect_url);
-            }
-
-	        $_POST['user_id'] = @$_SESSION['userId']; 
+        	$_POST['user_id'] = @$_SESSION['userId']; 
 	        $dt = gmdate('Y-m-d H:i:s');
 	        $_POST['dt'] = $dt;
 	        $_POST['user_comp_id'] = @$_SESSION['comp_id']; 
 	        $_POST['user_branch_id'] = @$_SESSION['branch_id'];
+
+        	if ($_POST['invoice_total_full_amt'] > $_POST['invoice_balane_amt'] && $_POST['credit_status']!='Cancelled') { 
+                	$redirect_url = BASE_PATH."Editinvoicecreditnoteregister?id=".base64_encode($id)."&msg=2";
+                	redirect($redirect_url);
+            } else {
+
+            	if ($_POST['invoice_total_full_amt'] > $_POST['invoice_tot_amt']) {
+            		$redirect_url = BASE_PATH."Editinvoicecreditnoteregister?id=".base64_encode($id)."&msg=2";
+                	redirect($redirect_url);
+            	}
+
+            	$invoice_credit_amt = (float)$_POST['invoice_total_full_amt'];
+        		// Update Invoice master table
+        		$_POST['invoice_balane_amt'] = $invoice_credit_amt;
+        		$_POST['invoice_credit_amt'] = 0;
+
+                $invoicedata = $this->Credit_master->UpdateInvoiceBalance($this->input->post());
+
+                //Update Payment master table
+                $_POST['invoice_balane_amt'] = $invoice_credit_amt;
+        		$_POST['invoice_credit_amt'] = 0;
+
+                $invoicedata = $this->Credit_master->UpdatePaymentBalance($this->input->post());
+
+                $UpdateInvoiceData = $this->Credit_master->UpdateInvoiceStatus($this->input->post());
+
+                $invoice_status = $this->Invoice_master->getInvoiceStatusById($_POST['file_id']);
+                
+        		if ($invoice_status==0) { 
+        			$_POST['invoice_file_no'] = $_POST['file_id'];
+        			$UpdateFileData = $this->Credit_master->UpdateInvoicePaymentDataByFile($this->input->post());
+        		}
+                
+            }	        
 
 	        $resultdata = $this->Credit_master->updateEditCreditData($this->input->post()); 
           

@@ -33,6 +33,12 @@ class Viewfileinvoicepayment extends CI_Controller {
 		$this->load->model('File_master');
 		$this->load->model('Branch_master');
 
+		if (@$_POST['submit']=='excel') {
+			//print_r($_POST);exit;
+			$redirecturl = BASE_PATH."Viewexcelfileinvoicepayment?invoice_from_date=".@$_POST['invoice_from_date']."&invoice_to_date=".@$_POST['invoice_to_date']."&invoice_type=".@$_POST['invoice_type']."&status=".@$_POST['status']."&clients_name=".@$_POST['clients_name']."&file_no_type=".@$_POST['file_no_type'];
+	        redirect($redirecturl);
+		}
+		
 		if (@$_POST) {
 			$mainmodule_id = 3;
 			$submodule_id = 51;

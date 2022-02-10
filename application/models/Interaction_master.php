@@ -83,6 +83,39 @@ class Interaction_master extends CI_Model{
         return $result;
     }
 
+
+    function getInteractionExcelSearch($data){ 
+
+       $search = '';
+       if (@$data['file_from_date'] || @$data['file_To_date']) {
+          $search .= ' and date(acir.interaction_date) >= "'.date('Y-m-d',strtotime($data['file_from_date'])).'" and date(acir.interaction_date) <= "'.date('Y-m-d',strtotime($data['file_To_date'])).'"';
+       }
+
+       if (@$data['clients_name']) {
+          $search .= ' and acm.id = "'.$data['clients_name'].'"';
+       }
+
+       $querystring =  'SELECT acir.id,acm.client_name,acm.address,acm.country_code,acm.company_web_page,acm.tel_no,acir.interaction_date,acir.location_interaction,acir.phone_interaction,acir.full_name,acir.mobile_office_number,acnt.name country,ast.name state,act.name city,acir.purpose_of_meeting,acir.summary_of_items_discussed,acir.summary_of_action_points,acir.action_tobe_taken_to_achieve_said_purpose,acir.team_aci_followup_with_client FROM agrimin_client_interaction_report acir 
+          left join agrimin_client_master acm ON acir.client_id=acm.id 
+          left join agrimin_countries acnt ON acnt.id=acm.country_id
+          left join agrimin_states ast ON ast.id=acm.state_id
+          left join agrimin_cities act ON act.id=acm.city_id Where acir.is_active = 1 and acir.user_comp_id = '.$_SESSION['comp_id'].' and acir.user_branch_id = '.$_SESSION['branch_id'].' '.$search.' order by acir.id desc';
+
+
+        /*echo $querystring = "SELECT acir.id,acm.client_name,acm.address,acm.company_web_page,acir.interaction_date,acir.location_interaction,acir.phone_interaction,acir.full_name,acir.mobile_office_number,acnt.name country,ast.name state,act.name city FROM agrimin_client_interaction_report acir 
+          left join agrimin_client_master acm ON acir.client_id=acm.id 
+          left join agrimin_countries acnt ON acnt.id=acm.country_id
+          left join agrimin_states ast ON ast.id=acm.state_id
+          left join agrimin_cities act ON act.id=acm.city_id
+          Where aft.is_active = 1 ".$search. 
+          order by acir.id desc";exit;*/
+        $queryforpubid = $this->db->query($querystring);
+
+        $result = $queryforpubid->result_array();
+
+        return $result;
+    }
+
     function getInteractiondatabyid($id){ 
 
         #$querystring = "SELECT * FROM agrimin_client_interaction_report where id = $id";
@@ -199,6 +232,7 @@ class Interaction_master extends CI_Model{
         $queryforpubid = $this->db->query($querystring);
 
         $result = $queryforpubid->result_array();
+        //print_r($result[0]);exit; 
         return $result[0];
     }
 

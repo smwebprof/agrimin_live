@@ -229,6 +229,9 @@
 								<div class="btn-group">
 									<button type="submit" class="btn green">Submit</button>
 								</div>
+								<div class="btn-group">
+									<button type="submit" class="btn yellow" name="submit" value="excel">View Excel Report</button>
+								</div>
 							</div>
 
 
@@ -364,7 +367,7 @@
 									<?php } else { ?>
 									<?php  if (!in_array($_SESSION['branch_id'], $branch_status)) { ?>
 									<span class="label label-sm label-warning">
-										 <a href="<?php echo BASE_PATH; ?>RedirectInvoicefileregister?id=<?php echo base64_encode($file_data['id']); ?>"  style="color:#fff">Invoice</a>
+										 <a href="<?php echo BASE_PATH; ?>RedirectInvoicefileregister?id=<?php echo base64_encode($file_data['id']); ?>&type=<?php echo $file_data['file_no_type']; ?>"  style="color:#fff">Invoice</a>
 									</span><br/><br/>
 									<?php } ?>
 									<?php } ?>

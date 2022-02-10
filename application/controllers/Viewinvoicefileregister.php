@@ -32,6 +32,12 @@ class Viewinvoicefileregister extends CI_Controller {
 		$this->load->model('Branch_master');
 
         $invoice_info = "Single";
+
+        if (@$_POST['submit']=='excel') {
+        	//print_r($_POST);exit;
+			$redirecturl = BASE_PATH."Viewexcelinvoicefileregister?invoice_from_date=".@$_POST['invoice_from_date']."&invoice_to_date=".@$_POST['invoice_to_date']."&invoice_type=".@$_POST['invoice_type']."&status=".@$_POST['status']."&clients_name=".@$_POST['clients_name']."&file_no_type=".@$_POST['file_no_type']."&invoice_currency=".@$_POST['invoice_currency'];
+	        redirect($redirecturl);
+		}
 		
 		if (@$_POST) {
 			//print_r($_POST);exit;

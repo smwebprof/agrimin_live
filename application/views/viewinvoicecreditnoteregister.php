@@ -152,8 +152,8 @@
 									<div class="input-group">
 									<select class="form-control" id="status" name="status">
 										<option value ="">All</option>
-										<?php /*<option value ="Open" <?php if (@$this->data['status'] == 'Open') { echo 'selected'; } ?>>Open</option>
-										<option value ="Closed" <?php if (@$this->data['status'] == 'Closed') { echo 'selected'; } ?>>Closed</option>*/ ?>
+										<?php /*<option value ="Open" <?php if (@$this->data['status'] == 'Open') { echo 'selected'; } ?>>Open</option>*/ ?>
+										<option value ="Closed" <?php if (@$this->data['status'] == 'Closed') { echo 'selected'; } ?>>Closed</option>
 										<option value ="Cancelled" <?php if (@$this->data['status'] == 'Cancelled') { echo 'selected'; } ?>>Cancelled</option>
 										<?php /*<option value ="Cancelled" <?php if (@$this->data['status'] == 'Cancelled') { echo 'Cancelled'; } ?>>Cancelled</option>*/?>
 									</select>
